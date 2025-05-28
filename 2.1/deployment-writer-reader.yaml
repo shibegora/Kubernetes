@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: writer-reader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: writer-reader
+  template:
+    metadata:
+      labels:
+        app: writer-reader
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            i=0;
+            while true; do
+              echo "Count: $i - $(date)" >> /shared/data.txt;
+              i=$((i+1));
+              sleep 5;
+            done
+        volumeMounts:
+        - name: shared-data
+          mountPath: /shared
+      - name: multitool
+        image: wbitt/network-multitool
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            while true; do
+              echo "--- FILE CONTENT ---";
+              cat /shared/data.txt || echo "No data yet";
+              echo "--------------------";
+              sleep 5;
+            done
+        volumeMounts:
+        - name: shared-data
+          mountPath: /shared
+      volumes:
+      - name: shared-data
+        emptyDir: {}
