@@ -10,4 +10,4 @@
 ![alt text](image-2.png)
 
 Чтение файла изнутри пода
-image-3.png
+![image](https://github.com/user-attachments/assets/d97e7f27-84a5-488d-b5f1-53fda0a8df38)
