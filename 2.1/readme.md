@@ -10,4 +10,4 @@
 ![alt text](image-2.png)
 
 Чтение файла изнутри пода
-![alt text](Image-3.png)
+image-3.png
