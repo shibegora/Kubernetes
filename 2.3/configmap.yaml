@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: default
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Simple Web Page</title>
+    </head>
+    <body>
+        <h1>Netology DevOps</h1>
+    </body>
+    </html>
