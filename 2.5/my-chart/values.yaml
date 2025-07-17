@@ -1,0 +1,19 @@
+frontend:
+  name: shibegora-prod-nginx
+  replicas: 3
+  image:
+    repository: nginx
+    tag: 1.26-perl
+  service:
+    enabled: true
+    type: ClusterIP
+
+backend:
+  name: shibegora-prod-echoserver
+  replicas: 2
+  image:
+    repository: gcr.io/kubernetes-e2e-test-images/echoserver
+    tag: 2.2
+  service:
+    enabled: true
+    type: ClusterIP

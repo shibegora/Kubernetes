@@ -1,0 +1,15 @@
+frontend:
+  replicas: 1
+  image:
+    repository: nginx
+    tag: 1.27.4-bookworm-perl
+  service:
+    enabled: false
+
+backend:
+  replicas: 2
+  image:
+    repository: gcr.io/kubernetes-e2e-test-images/echoserver
+    tag: 2.1
+  service:
+    enabled: false
